@@ -1,0 +1,31 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let product of products; let i = index;">
+        <th scope="row">{{product.id}}</th>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td *ngIf="product.stock > 0; else outOfStockTemplate" >
+            <button type="button" class="btn btn-light" (click) ="update(product.name, product.price)">Add to cart</button>
+        </td>
+          <ng-template #outOfStockTemplate>
+            <td>Out of Stock</td> 
+          </ng-template>
+      </tr>  
+      <tr>
+        <div>
+            <h1>Cart</h1>
+            <p><b>Product Name: </b>{{ Name }}</p>
+            <p><b>Price: </b> {{ Price }}</p>
+            
+          </div>
+      </tr>
+      
+    </tbody>
+  </table>
